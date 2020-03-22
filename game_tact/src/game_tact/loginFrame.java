@@ -57,8 +57,11 @@ public class loginFrame {
 		JButton btnNewButton = new JButton("Login");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				loginCheck login = new loginCheck();
-				//login.main(null);
+				dbFunctions db = new dbFunctions();
+				String pass = String.valueOf(passwordField.getPassword());	
+				String email = String.valueOf(textField.getText());
+				db.login(email, pass);
+				
 			}
 		});
 		btnNewButton.setBounds(150, 165, 89, 23);

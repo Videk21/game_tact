@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -18,14 +19,14 @@ public class dbFunctions {
 	            .getConnection("jdbc:postgresql://kandula.db.elephantsql.com:5432/pjthwgkl",
 	            "pjthwgkl", "sK9ZBSjmWuziwv4QEqlwYTrHnrh_XD-4");
 	         c.setAutoCommit(false);
-	         System.out.println(email);
-	         System.out.println(usr);
-	         System.out.println(pass);
-
+	         System.out.println("Opened database successfully");
 	         
 	         stmt = c.createStatement();
-	         ResultSet rs = stmt.executeQuery( "SELECT register('"+usr+"','"+email+"','"+pass+"')");
-	         System.out.println();
+	         ResultSet rs = stmt.executeQuery( "SELECT register('"+usr+"','"+email+"','"+pass+"')" );
+	         while ( rs.next() ) {
+	            int id = rs.getInt(1);
+	            System.out.println(id);
+	         }
 	         rs.close();
 	         stmt.close();
 	         c.close();
@@ -35,7 +36,7 @@ public class dbFunctions {
 	      }
 	      System.out.println("Operation done successfully");
 	   }
-	public static void login(String usr, String email, String pass) {
+	public static void login(String email, String pass) {
 		Connection c = null;
 	      Statement stmt = null;
 	      try {
@@ -45,12 +46,13 @@ public class dbFunctions {
 	            "pjthwgkl", "sK9ZBSjmWuziwv4QEqlwYTrHnrh_XD-4");
 	         c.setAutoCommit(false);
 	         System.out.println("Opened database successfully");
-	         System.out.println(pass);
-
 	         
 	         stmt = c.createStatement();
-	         ResultSet rs = stmt.executeQuery( "SELECT login('+email+','+pass+')");
-	         System.out.println(rs.getInt(0));
+	         ResultSet rs = stmt.executeQuery( "SELECT login('"+email+"','"+pass+"')" );
+	         while ( rs.next() ) {
+	            Boolean id = rs.getBoolean(1);
+	            System.out.println(id);
+	         }
 	         rs.close();
 	         stmt.close();
 	         c.close();

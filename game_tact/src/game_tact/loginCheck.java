@@ -15,7 +15,7 @@ public class loginCheck {
 	            "pjthwgkl", "sK9ZBSjmWuziwv4QEqlwYTrHnrh_XD-4");
 	         c.setAutoCommit(false);
 	         System.out.println("Opened database successfully");
-
+	         
 	         stmt = c.createStatement();
 	         ResultSet rs = stmt.executeQuery( "SELECT * FROM \"public\".\"uporabniki\"" );
 	         while ( rs.next() ) {
