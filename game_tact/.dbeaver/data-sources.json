@@ -1,0 +1,52 @@
+{
+	"folders": {},
+	"connections": {
+		"postgres-jdbc-170fdca594f-b24a2221d2e14a8": {
+			"provider": "postgresql",
+			"driver": "postgres-jdbc",
+			"name": "PostgreSQL - pjthwgkl",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "kandula.db.elephantsql.com",
+				"port": "5432",
+				"database": "pjthwgkl",
+				"url": "jdbc:postgresql://kandula.db.elephantsql.com:5432/pjthwgkl",
+				"home": "PostgreSQL Binaries",
+				"type": "dev",
+				"provider-properties": {
+					"@dbeaver-show-non-default-db@": "false",
+					"@dbeaver-show-template-db@": "false",
+					"postgresql.dd.plain.string": "false",
+					"postgresql.dd.tag.string": "false"
+				},
+				"handlers": {}
+			}
+		}
+	},
+	"virtual-models": {
+		"postgres-jdbc-170fdca594f-b24a2221d2e14a8": {
+			"pjthwgkl": {
+				"public": {
+					":uporabniki": {
+						"properties": {
+							"erd.diagram.state": {
+								"serialized": "<diagram version=\"1\" name=\"uporabniki\" time=\"202003221345\"><entities><data-source id=\"postgres-jdbc-170fdca594f-b24a2221d2e14a8\"><entity id=\"1\" name=\"uporabniki\" fq-name=\"public.uporabniki\" order=\"0\" color-bg=\"255,128,64\" border-width=\"3\" x=\"384\" y=\"181\"><path name=\"public\"/><path name=\"pjthwgkl\"/></entity><entity id=\"2\" name=\"strategije\" fq-name=\"public.strategije\" order=\"1\" x=\"163\" y=\"20\"><path name=\"public\"/><path name=\"pjthwgkl\"/></entity><entity id=\"3\" name=\"komentarji\" fq-name=\"public.komentarji\" order=\"2\" x=\"8\" y=\"174\"><path name=\"public\"/><path name=\"pjthwgkl\"/></entity></data-source></entities><relations><relation name=\"strategije_fk0\" fq-name=\"public.strategije.strategije_fk0\" type=\"fk\" pk-ref=\"1\" fk-ref=\"2\"/><relation name=\"komentarji_fk0\" fq-name=\"public.komentarji.komentarji_fk0\" type=\"fk\" pk-ref=\"1\" fk-ref=\"3\"/><relation name=\"komentarji_fk1\" fq-name=\"public.komentarji.komentarji_fk1\" type=\"fk\" pk-ref=\"2\" fk-ref=\"3\"/></relations></diagram>"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false
+		}
+	}
+}

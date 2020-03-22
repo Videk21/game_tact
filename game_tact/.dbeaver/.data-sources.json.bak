@@ -1,0 +1,37 @@
+{
+	"folders": {},
+	"connections": {
+		"postgres-jdbc-170fdca594f-b24a2221d2e14a8": {
+			"provider": "postgresql",
+			"driver": "postgres-jdbc",
+			"name": "PostgreSQL - pjthwgkl",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "kandula.db.elephantsql.com",
+				"port": "5432",
+				"database": "pjthwgkl",
+				"url": "jdbc:postgresql://kandula.db.elephantsql.com:5432/pjthwgkl",
+				"home": "PostgreSQL Binaries",
+				"type": "dev",
+				"provider-properties": {
+					"@dbeaver-show-non-default-db@": "false",
+					"@dbeaver-show-template-db@": "false",
+					"postgresql.dd.plain.string": "false",
+					"postgresql.dd.tag.string": "false"
+				},
+				"handlers": {}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false
+		}
+	}
+}
