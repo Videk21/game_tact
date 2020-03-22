@@ -1,1 +1,0 @@
-select register('luki','luki@mail.com','123')

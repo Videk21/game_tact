@@ -23,8 +23,8 @@ public class dbFunctions {
 
 	         
 	         stmt = c.createStatement();
-	         ResultSet rs = stmt.executeQuery( "SELECT register('"+usr+"','"+email+"','"+pass+"')");
-	         System.out.println(stmt.toString());
+	         ResultSet rs = stmt.executeQuery( "SELECT register('+usr+','+email+','+pass+')");
+	         System.out.println(rs);
 	         rs.close();
 	         stmt.close();
 	         c.close();

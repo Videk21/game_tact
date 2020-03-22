@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
@@ -93,18 +95,35 @@ public class registerFrame {
 		JButton btnNewButton = new JButton("Register");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dbFunctions dbR = new dbFunctions();
+				String pass = String.valueOf(passwordFieldPass1.getPassword());	
+				String pass2 = String.valueOf(passwordFieldPass2.getPassword());	
+				System.out.println(pass+","+pass2);
+				if(pass == pass2) {
+					System.out.println(pass+","+pass2);
+					dbFunctions dbR = new dbFunctions();								 
+					dbR.register(textFieldUsername.toString(), textFieldEmail.toString(),pass);
+				}else {
+					JOptionPane.showMessageDialog(frame,"Gesli se ne ujemata.","Warning",JOptionPane.WARNING_MESSAGE);
+				}
 				
-				String pass = String.valueOf(passwordFieldPass1.getPassword());
-				 
-				dbR.register(textFieldUsername.toString(), textFieldEmail.toString(),pass);
 			}
 		});
 		btnNewButton.setBounds(260, 218, 89, 23);
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnLogin = new JButton("Login");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				loginFrame reg = new loginFrame();
+				reg.setVisible(true);
+				frame.dispose();
+			}
+		});
 		btnLogin.setBounds(259, 246, 89, 23);
 		frame.getContentPane().add(btnLogin);
+	}	
+	public void setVisible(boolean b) {
+		registerFrame window = new registerFrame();
+		window.frame.setVisible(true);	
 	}
 }

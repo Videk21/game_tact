@@ -67,7 +67,9 @@ public class loginFrame {
 		JButton btnRegister = new JButton("Register");
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				registerFrame frame = new registerFrame();
+				registerFrame reg = new registerFrame();
+				reg.setVisible(true);
+				frame.dispose();
 			}
 		});
 		btnRegister.setBounds(150, 191, 89, 23);
@@ -90,4 +92,9 @@ public class loginFrame {
 		lblNewLabel_2.setBounds(82, 112, 46, 14);
 		frame.getContentPane().add(lblNewLabel_2);
 	}
+	public void setVisible(boolean b) {
+		loginFrame window = new loginFrame();
+		window.frame.setVisible(true);	
+	}
+	
 }
