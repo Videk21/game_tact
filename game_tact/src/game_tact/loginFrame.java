@@ -13,7 +13,6 @@ import java.awt.event.ActionEvent;
 
 public class loginFrame {
 
-	public int id;
 	private JFrame frame;
 	private JTextField textField;
 	private JPasswordField passwordField;
@@ -64,7 +63,7 @@ public class loginFrame {
 				String email = String.valueOf(textField.getText());
 				login = db.login(email, pass);
 				if(login) {
-					id = db.loginInfo(email);
+					db.loginInfo(email);
 					main mn = new main();
 					mn.setVisible(true);
 				}

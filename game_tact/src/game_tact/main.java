@@ -13,7 +13,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class main {
-
 	private JFrame frame;
 	private JTextField textFieldComent;
 
@@ -79,12 +78,22 @@ public class main {
 		textFieldComent.setColumns(10);
 		
 		JButton btnOptions = new JButton("Options");
+		btnOptions.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dbFunctions db = new dbFunctions();
+				int id = db.id;
+				System.out.println(id);
+				userSetting us = new userSetting();
+				us.setVisible(true);
+			}
+		});
 		btnOptions.setBounds(78, 30, 89, 23);
 		frame.getContentPane().add(btnOptions);
 		
 		JButton btnNewButton_1 = new JButton("Add strategy");
 		btnNewButton_1.setBounds(281, 351, 126, 23);
 		frame.getContentPane().add(btnNewButton_1);
+		
 	}
 	public void setVisible(boolean b) {
 		main window = new main();
