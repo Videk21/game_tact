@@ -108,6 +108,7 @@ public class registerFrame {
 					System.out.println(pass+","+pass2);
 					dbFunctions dbR = new dbFunctions();								 
 					dbR.register(usr, email, pass);
+					
 				}else{
 					JOptionPane.showMessageDialog(frame,"Gesli se ne ujemata.","Warning",JOptionPane.WARNING_MESSAGE);
 				}

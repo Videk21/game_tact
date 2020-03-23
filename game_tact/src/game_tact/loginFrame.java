@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 
 public class loginFrame {
 
+	public int id;
 	private JFrame frame;
 	private JTextField textField;
 	private JPasswordField passwordField;
@@ -57,11 +58,16 @@ public class loginFrame {
 		JButton btnNewButton = new JButton("Login");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Boolean login;
 				dbFunctions db = new dbFunctions();
 				String pass = String.valueOf(passwordField.getPassword());	
 				String email = String.valueOf(textField.getText());
-				db.login(email, pass);
-				
+				login = db.login(email, pass);
+				if(login) {
+					id = db.loginInfo(email);
+					main mn = new main();
+					mn.setVisible(true);
+				}
 			}
 		});
 		btnNewButton.setBounds(150, 165, 89, 23);
