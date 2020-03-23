@@ -53,7 +53,7 @@ public class stratFrame {
 		Image image = null;
 		URL url = null;
 	    try {
-	        url = new URL("https://image.winudf.com/v2/image/Y29tLmtvYWxpdHlnYW1lLnI2c2llZ2V0YWN0aWNzX3NjcmVlbl80X3NrcHl4b2tn/screen-4.jpg?fakeurl=1&type=.jpg");
+	        url = new URL("https://www.scan.co.uk/images/homepages/progaming/guide-CSGO-strategy-image2.jpg");
 	        image = ImageIO.read(url);
 	    } catch (MalformedURLException ex) {
 	        System.out.println("Malformed URL");

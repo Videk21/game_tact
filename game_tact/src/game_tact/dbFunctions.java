@@ -7,6 +7,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class dbFunctions {
 
@@ -14,6 +17,7 @@ public class dbFunctions {
 	public static String username;
 	public static String gmail;
 	public static String pass;
+    ArrayList<Integer> stStat = new ArrayList<Integer>();
 	
 	public static int register(String usr, String email, String pass) {
 		Connection c = null;
@@ -87,7 +91,7 @@ public class dbFunctions {
 	         c = DriverManager
 	            .getConnection("jdbc:postgresql://kandula.db.elephantsql.com:5432/pjthwgkl",
 	            "pjthwgkl", "sK9ZBSjmWuziwv4QEqlwYTrHnrh_XD-4");
-	         c.setAutoCommit(false);
+
 	         System.out.println("Opened database successfully");
 	         
 	         stmt = c.createStatement();
@@ -127,12 +131,6 @@ public class dbFunctions {
 				ps.setString(4,geslo);
 				ResultSet rs = ps.executeQuery();
 				rs.next();
-				/*
-	         System.out.println("Opened database successfully");
-	         String sql = "SELECT posodobi("+id+",'"+usr+"','"+email+"','"+pass+"')";
-	         stmt = c.createStatement();
-	         System.out.println(sql.toString());
-	         ResultSet rs = stmt.executeQuery(sql);*/
 	         rs.close();
 	         ps.close();
 	         c.close();
@@ -143,7 +141,7 @@ public class dbFunctions {
 	      System.out.println("Operation done successfully");
 
 	}
-	public static void updateUser(String opis) {
+	public static void dodajKomentar(String opis) {
 		Connection c = null;
 	      Statement stmt = null;
 	      try {
@@ -152,16 +150,42 @@ public class dbFunctions {
 	         c = DriverManager
 	            .getConnection("jdbc:postgresql://kandula.db.elephantsql.com:5432/pjthwgkl",
 	            "pjthwgkl", "sK9ZBSjmWuziwv4QEqlwYTrHnrh_XD-4");
-	         c.setAutoCommit(false);
+
 	         
 	       
 	         System.out.println("Opened database successfully");
-	         String sql = "SELECT posodobi("+id+",'"+usr+"','"+email+"','"+pass+"')";
+	         String sql = "SELECT dodajKomentar("+id+",'"+opis+"')";
 	         stmt = c.createStatement();
 	         System.out.println(sql.toString());
 	         ResultSet rs = stmt.executeQuery(sql);
 	         rs.close();
-	         ps.close();
+	         stmt.close();
+	         c.close();
+	      } catch ( Exception e ) {
+	         System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+	         System.exit(0);
+	      }
+	      System.out.println("Operation done successfully");
+	}
+	public static void dodajStrategijo(String opis, String naslov, String url) {
+		Connection c = null;
+	      Statement stmt = null;
+	      try {
+	    	  
+	         Class.forName("org.postgresql.Driver");
+	         c = DriverManager
+	            .getConnection("jdbc:postgresql://kandula.db.elephantsql.com:5432/pjthwgkl",
+	            "pjthwgkl", "sK9ZBSjmWuziwv4QEqlwYTrHnrh_XD-4");
+
+	         
+	       
+	         System.out.println("Opened database successfully");
+	         String sql = "SELECT dodajStrategijo("+id+",'"+opis+"','"+url+"','"+naslov+"')";
+	         stmt = c.createStatement();
+	         System.out.println(sql.toString());
+	         ResultSet rs = stmt.executeQuery(sql);
+	         rs.close();
+	         stmt.close();
 	         c.close();
 	      } catch ( Exception e ) {
 	         System.err.println( e.getClass().getName()+": "+ e.getMessage() );
@@ -169,5 +193,60 @@ public class dbFunctions {
 	      }
 	      System.out.println("Operation done successfully");
 
+	}
+	public static void nextStrat() {
+		Connection c = null;
+	      Statement stmt = null;
+	      try {
+	    	  
+	         Class.forName("org.postgresql.Driver");
+	         c = DriverManager
+	            .getConnection("jdbc:postgresql://kandula.db.elephantsql.com:5432/pjthwgkl",
+	            "pjthwgkl", "sK9ZBSjmWuziwv4QEqlwYTrHnrh_XD-4");
+	         
+	       
+	         System.out.println("Opened database successfully");
+	         String sql = "SELECT dodajKomentar("+id+")";
+	         stmt = c.createStatement();
+	         System.out.println(sql.toString());
+	         ResultSet rs = stmt.executeQuery(sql);
+	         rs.close();
+	         stmt.close();
+	         c.close();
+	      } catch ( Exception e ) {
+	         System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+	         System.exit(0);
+	      }
+	      System.out.println("Operation done successfully");
+
+	}
+	public void getNum() {
+		Connection c = null;
+	      Statement stmt = null;
+
+	      
+	      try {
+	    	  
+	         Class.forName("org.postgresql.Driver");
+	         c = DriverManager
+	            .getConnection("jdbc:postgresql://kandula.db.elephantsql.com:5432/pjthwgkl",
+	            "pjthwgkl", "sK9ZBSjmWuziwv4QEqlwYTrHnrh_XD-4");
+
+	         System.out.println("Opened database successfully");
+	         
+	         stmt = c.createStatement();
+	         ResultSet rs = stmt.executeQuery( "SELECT id FROM \"public\".\"strategije\" order by id desc ");
+	         while ( rs.next() ) {
+		            stStat.add(rs.getInt(id));
+		            System.out.println(id);
+		         }
+	         rs.close();
+	         stmt.close();
+	         c.close();
+	      } catch ( Exception e ) {
+	         System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+	         System.exit(0);
+	      }
+	      System.out.println("Operation done successfully");
 	}
 }

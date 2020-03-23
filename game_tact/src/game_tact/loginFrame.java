@@ -64,6 +64,7 @@ public class loginFrame {
 				login = db.login(email, pass);
 				if(login) {
 					db.loginInfo(email);
+					db.getNum();
 					main mn = new main();
 					mn.setVisible(true);
 					frame.dispose();

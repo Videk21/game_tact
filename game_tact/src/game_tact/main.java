@@ -56,6 +56,8 @@ public class main {
 		JButton btnComent = new JButton("Coment");
 		btnComent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String opis = String.valueOf(textFieldComent.getText());
+				dbFunctions.dodajKomentar(opis);
 			}
 		});
 		btnComent.setBounds(491, 319, 89, 23);
@@ -98,6 +100,12 @@ public class main {
 		frame.getContentPane().add(btnOptions);
 		
 		JButton btnNewButton_1 = new JButton("Add strategy");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				createStat cs = new createStat();
+				cs.setVisible(true);
+			}
+		});
 		btnNewButton_1.setBounds(281, 351, 126, 23);
 		frame.getContentPane().add(btnNewButton_1);
 		
