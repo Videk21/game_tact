@@ -104,10 +104,19 @@ public class registerFrame {
 				System.out.println(pass.equals(pass2));
 				System.out.println(pass);
 				System.out.println(pass2);
+				int num;
 				if(pass.equals(pass2)) {
 					System.out.println(pass+","+pass2);
 					dbFunctions dbR = new dbFunctions();								 
-					dbR.register(usr, email, pass);
+					num = dbR.register(usr, email, pass);
+					if(num!=0) {
+						JOptionPane.showMessageDialog(frame,"Mail že obstaja.","Warning",JOptionPane.WARNING_MESSAGE);
+					}
+					else {
+						loginFrame reg = new loginFrame();
+						reg.setVisible(true);
+						frame.dispose();
+					}
 					
 				}else{
 					JOptionPane.showMessageDialog(frame,"Gesli se ne ujemata.","Warning",JOptionPane.WARNING_MESSAGE);

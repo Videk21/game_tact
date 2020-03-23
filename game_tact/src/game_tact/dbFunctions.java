@@ -15,23 +15,30 @@ public class dbFunctions {
 	public static String gmail;
 	public static String pass;
 	
-	public static void register(String usr, String email, String pass) {
+	public static int register(String usr, String email, String pass) {
 		Connection c = null;
 	      Statement stmt = null;
+	      int num = 1;
+	      
 	      try {
+	    	 
 	         Class.forName("org.postgresql.Driver");
 	         c = DriverManager
 	            .getConnection("jdbc:postgresql://kandula.db.elephantsql.com:5432/pjthwgkl",
-	            "pjthwgkl", "sK9ZBSjmWuziwv4QEqlwYTrHnrh_XD-4");
-	         c.setAutoCommit(false);
+	            "pjthwgkl", "sK9ZBSjmWuziwv4QEqlwYTrHnrh_XD-4"); 
 	         System.out.println("Opened database successfully");
 	         String sql="SELECT register('"+usr+"','"+email+"','"+pass+"')";
 	         stmt = c.createStatement();
 	         ResultSet rs = stmt.executeQuery(sql);
 	         while ( rs.next() ) {
-	            int id = rs.getInt(1);
+	            num = rs.getInt(1);
 	            System.out.println(id);
 	         }
+	         if(num==0) {
+		         sql=" INSERT INTO uporabniki (username, gmail, geslo) VALUES ('"+usr+"', '"+email+"', '"+pass+"');";
+		         stmt = c.createStatement();
+		         stmt.executeUpdate(sql);
+		         }
 	         System.out.println(sql.toString());
 	         rs.close();
 	         stmt.close();
@@ -40,7 +47,7 @@ public class dbFunctions {
 	         System.err.println( e.getClass().getName()+": "+ e.getMessage() );
 	         System.exit(0);
 	      }
-	      
+	      return num;
 	   }
 	public static Boolean login(String email, String pass) {
 		Connection c = null;
@@ -51,7 +58,6 @@ public class dbFunctions {
 	         c = DriverManager
 	            .getConnection("jdbc:postgresql://kandula.db.elephantsql.com:5432/pjthwgkl",
 	            "pjthwgkl", "sK9ZBSjmWuziwv4QEqlwYTrHnrh_XD-4");
-	         c.setAutoCommit(false);
 	         System.out.println("Opened database successfully");
 	        
 	         stmt = c.createStatement();
@@ -113,7 +119,6 @@ public class dbFunctions {
 	         c = DriverManager
 	            .getConnection("jdbc:postgresql://kandula.db.elephantsql.com:5432/pjthwgkl",
 	            "pjthwgkl", "sK9ZBSjmWuziwv4QEqlwYTrHnrh_XD-4");
-	         c.setAutoCommit(false);
 	         
 	         PreparedStatement ps=c.prepareStatement("SELECT posodobi(?,?,?,?)");
 				ps.setInt(1,id);
@@ -128,6 +133,33 @@ public class dbFunctions {
 	         stmt = c.createStatement();
 	         System.out.println(sql.toString());
 	         ResultSet rs = stmt.executeQuery(sql);*/
+	         rs.close();
+	         ps.close();
+	         c.close();
+	      } catch ( Exception e ) {
+	         System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+	         System.exit(0);
+	      }
+	      System.out.println("Operation done successfully");
+
+	}
+	public static void updateUser(String opis) {
+		Connection c = null;
+	      Statement stmt = null;
+	      try {
+	    	  
+	         Class.forName("org.postgresql.Driver");
+	         c = DriverManager
+	            .getConnection("jdbc:postgresql://kandula.db.elephantsql.com:5432/pjthwgkl",
+	            "pjthwgkl", "sK9ZBSjmWuziwv4QEqlwYTrHnrh_XD-4");
+	         c.setAutoCommit(false);
+	         
+	       
+	         System.out.println("Opened database successfully");
+	         String sql = "SELECT posodobi("+id+",'"+usr+"','"+email+"','"+pass+"')";
+	         stmt = c.createStatement();
+	         System.out.println(sql.toString());
+	         ResultSet rs = stmt.executeQuery(sql);
 	         rs.close();
 	         ps.close();
 	         c.close();

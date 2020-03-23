@@ -66,6 +66,7 @@ public class loginFrame {
 					db.loginInfo(email);
 					main mn = new main();
 					mn.setVisible(true);
+					frame.dispose();
 				}
 			}
 		});

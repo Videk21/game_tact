@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JList;
 
 public class main {
 	private JFrame frame;
@@ -48,17 +49,23 @@ public class main {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(199, 45, 282, 264);
-		frame.getContentPane().add(textArea);
+		JTextArea textAreaOpis = new JTextArea();
+		textAreaOpis.setBounds(199, 45, 282, 118);
+		frame.getContentPane().add(textAreaOpis);
 		
 		JButton btnComent = new JButton("Coment");
+		btnComent.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnComent.setBounds(491, 319, 89, 23);
 		frame.getContentPane().add(btnComent);
 		
 		JButton btnNewButton = new JButton("Open strategy");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				stratFrame sF = new stratFrame();
+				sF.setVisible(true);
 			}
 		});
 		btnNewButton.setBounds(199, 11, 121, 23);
@@ -93,6 +100,10 @@ public class main {
 		JButton btnNewButton_1 = new JButton("Add strategy");
 		btnNewButton_1.setBounds(281, 351, 126, 23);
 		frame.getContentPane().add(btnNewButton_1);
+		
+		JList list = new JList();
+		list.setBounds(199, 200, 282, 118);
+		frame.getContentPane().add(list);
 		
 	}
 	public void setVisible(boolean b) {

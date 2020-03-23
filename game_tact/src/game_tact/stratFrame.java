@@ -65,5 +65,9 @@ public class stratFrame {
 
             
 	}
+	public void setVisible(boolean b) {
+		stratFrame window = new stratFrame();
+		window.frame.setVisible(true);	
+	}
 
 }

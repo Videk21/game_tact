@@ -95,6 +95,11 @@ public class userSetting {
 		frame.getContentPane().add(lblPassword);
 		
 		JButton btnCancle = new JButton("Cancel");
+		btnCancle.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
 		btnCancle.setBounds(109, 155, 89, 23);
 		frame.getContentPane().add(btnCancle);
 	}
