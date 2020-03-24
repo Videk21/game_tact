@@ -1,0 +1,103 @@
+# SQL Funkcije
+create or replace FUNCTION izbrisiStrategijo(sid integer)
+RETURNS void AS
+$$
+begin
+    update komentarji set strategija_id = 0  where strategija_id = sid;
+   DELETE from strategije s where id=sid;
+END;
+$$
+LANGUAGE 'plpgsql'
+create or replace FUNCTION izbrisiStrategijo(sid integer)
+RETURNS void AS
+$$
+begin
+    DELETE from komentarji WHERE strategija_id = sid;
+   DELETE from strategije s where id=sid;
+END;
+$$
+LANGUAGE 'plpgsql'
+---------------------------------------------------------------------------------------------------------------------
+create or replace FUNCTION urediStrategijo(uid integer,opi text,url varchar(255),_naslov varchar(100), sid integer )
+RETURNS void AS
+$$
+BEGIN
+    UPDATE strategije set opis=opi ,uporabnik_id=uid,url=url,naslov=_naslov where id=sid;
+END;
+$$
+LANGUAGE 'plpgsql'
+create or replace FUNCTION urediStrategijo(uid integer,opi text,ur varchar(255),_naslov varchar(100), sid integer )
+RETURNS void AS
+$$
+BEGIN
+    UPDATE strategije set opis=opi ,uporabnik_id=uid,url=ur,naslov=_naslov where id=sid;
+END;
+$$
+LANGUAGE 'plpgsql'
+create or replace FUNCTION izbrisiStrategijo(sid integer)
+RETURNS void AS
+$$
+BEGIN
+   DELETE from strategije s where id=sid;
+END;
+$$
+LANGUAGE 'plpgsql'
+-----------------------------------------------------------------------------------------------------------------------
+create or replace FUNCTION urediStrategijo(uid integer,opis text,url varchar(255),_naslov varchar(100) )
+RETURNS void AS
+$$
+BEGIN
+    UPDATE strategije set opis=opis ,uporabnik_id=uid,url=url,naslov=_naslov;
+END;
+$$
+LANGUAGE 'plpgsql'
+------------------------------------------------------------------------------------------------------------------------
+create or replace FUNCTION dodajKomentar(uid integer,opis varchar(100))
+RETURNS void AS
+$$
+BEGIN
+    insert into komentarji (opis,uporabnik_id ,time) values (opis, uid, CURRENT_TIMESTAMP);
+END;
+$$
+LANGUAGE 'plpgsql';
+------------------------------------------------------------------------------------------------------------------------
+CREATE FUNCTION posodobi(uid integer,usr varchar(100), email varchar(200), pass varchar(255))
+RETURNS void AS
+$$
+BEGIN
+update uporabniki set username = usr, gmail = email, geslo =pass where id=uid;
+END;
+$$
+LANGUAGE 'plpgsql';
+-----------------------------------------------------------------------------------------------------------------------
+CREATE or replace FUNCTION login(e_mail VARCHAR(200), pass VARCHAR(255)) 
+RETURNS BOOLEAN AS
+$$
+BEGIN
+    IF((SELECT COUNT(*) FROM uporabniki u WHERE u.gmail = e_mail AND u.geslo = pass) = 0) 
+    THEN
+    RETURN FALSE;
+    ELSE
+    RETURN TRUE;
+    END IF;
+END;
+$$
+LANGUAGE 'plpgsql';
+------------------------------------------------
+
+create or replace FUNCTION register(usr varchar(100), email varchar(200), pass varchar(255))
+RETURNS integer AS
+$$
+    declare
+        rowNum integer;
+    begin
+       select COUNT(u.id) into rowNum from uporabniki u where gmail = 'email';
+       if rowNum=0 then
+              INSERT INTO uporabniki (username, gmail, geslo) VALUES (usr, email, pass);
+            return rowNum;
+        elseif rowNum != 0 then
+            return rowNum;
+        end if;
+    END;
+$$
+LANGUAGE 'plpgsql'
