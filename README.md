@@ -47,3 +47,4 @@ Je aplikacija, ki prikazuje startegije na katere lahko komentiramo.
 - Če vam je bila aplikacija všeč
 ### BAZA
 
+[![game_tact](./addedFiles/database.png)]()
