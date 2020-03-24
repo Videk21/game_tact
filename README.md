@@ -18,6 +18,19 @@ Je aplikacija, ki prikazuje startegije na katere lahko komentiramo.
 
 [![game_tact](./addedFiles/komentira.png)]()
 
+3. Uporabnik lahko doda novo strategijo.
+
+[![game_tact](./addedFiles/dodajStrategijo.png)]()
+
+4. Uporabnik lahko ureja svoje podtake.
+
+[![game_tact](./addedFiles/urediUser.png)]()
+
+5. Na koncu pa lahko še odpre strategijo.
+
+[![game_tact](./addedFiles/openStrategy.png)]()
+
+
 ### Installation
 - Inštalacija game_tact je preprosta
 - Prenesite aplikacijo z gita
