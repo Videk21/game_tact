@@ -16,7 +16,7 @@ Je aplikacija, ki prikazuje startegije na katere lahko komentiramo.
 ### License
 
 - MIT license
-- Copyright 2020 © LukaProductions.
+- Copyright 2020 © Osiris.
 
 ### Donations 
 
