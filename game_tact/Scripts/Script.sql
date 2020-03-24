@@ -1,1 +1,8 @@
-SELECT * FROM strategije order by id desc 
+create or replace FUNCTION izbrisiStrategijo(sid integer)
+RETURNS void AS
+$$
+BEGIN
+   DELETE from strategije s where id=sid;
+END;
+$$
+LANGUAGE 'plpgsql'

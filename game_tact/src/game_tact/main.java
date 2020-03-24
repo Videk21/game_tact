@@ -4,18 +4,21 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
+
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
+import java.awt.Font;
 
 public class main {
 	private JFrame frame;
 	private JTextField textFieldComent;
+	
+	
 
 	/**
 	 * Launch the application.
@@ -44,14 +47,18 @@ public class main {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		dbFunctions.getInfo();
+
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 707, 482);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JTextArea textAreaOpis = new JTextArea();
+		final JTextArea textAreaOpis = new JTextArea(dbFunctions.Ops);
 		textAreaOpis.setBounds(199, 45, 282, 118);
 		frame.getContentPane().add(textAreaOpis);
+		
 		
 		JButton btnComent = new JButton("Coment");
 		btnComent.addActionListener(new ActionListener() {
@@ -70,14 +77,17 @@ public class main {
 				sF.setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(199, 11, 121, 23);
+		btnNewButton.setBounds(360, 11, 121, 23);
 		frame.getContentPane().add(btnNewButton);
 		
-		JButton btnNext = new JButton("Next");
-		btnNext.setBounds(404, 351, 89, 23);
-		frame.getContentPane().add(btnNext);
+		
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dbFunctions.backStrat();				
+			}
+		});
 		btnBack.setBounds(193, 351, 89, 23);
 		frame.getContentPane().add(btnBack);
 		
@@ -89,14 +99,13 @@ public class main {
 		JButton btnOptions = new JButton("Options");
 		btnOptions.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dbFunctions db = new dbFunctions();
-				int id = db.id;
+				int id = dbFunctions.id;
 				System.out.println(id);
 				userSetting us = new userSetting();
 				us.setVisible(true);
 			}
 		});
-		btnOptions.setBounds(78, 30, 89, 23);
+		btnOptions.setBounds(41, 30, 126, 23);
 		frame.getContentPane().add(btnOptions);
 		
 		JButton btnNewButton_1 = new JButton("Add strategy");
@@ -109,9 +118,37 @@ public class main {
 		btnNewButton_1.setBounds(281, 351, 126, 23);
 		frame.getContentPane().add(btnNewButton_1);
 		
+		final JLabel lblNewLabel = new JLabel(dbFunctions.Nsv);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel.setBounds(199, 15, 151, 19);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JButton btnNext = new JButton("Next");
+		btnNext.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {	
+				dbFunctions.nextStrat();
+				//lblNewLabel.setText():
+				textAreaOpis.setText(dbFunctions.Ops);
+				lblNewLabel.setText(dbFunctions.Nsv);
+
+			}
+		});
+		btnNext.setBounds(404, 351, 89, 23);
+		frame.getContentPane().add(btnNext);
+		
 		JList list = new JList();
-		list.setBounds(199, 200, 282, 118);
+		list.setBounds(199, 174, 282, 139);
 		frame.getContentPane().add(list);
+		
+		JButton btnEdit = new JButton("Edit strategy");
+		btnEdit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				editStrategy eS = new editStrategy();
+				eS.setVisible(true);
+			}
+		});
+		btnEdit.setBounds(41, 65, 126, 23);
+		frame.getContentPane().add(btnEdit);
 		
 	}
 	public void setVisible(boolean b) {

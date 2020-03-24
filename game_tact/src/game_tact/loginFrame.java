@@ -58,13 +58,13 @@ public class loginFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Boolean login;
-				dbFunctions db = new dbFunctions();
+
 				String pass = String.valueOf(passwordField.getPassword());	
 				String email = String.valueOf(textField.getText());
-				login = db.login(email, pass);
+				login = dbFunctions.login(email, pass);
 				if(login) {
-					db.loginInfo(email);
-					db.getNum();
+					dbFunctions.loginInfo(email);
+					dbFunctions.getNum();
 					main mn = new main();
 					mn.setVisible(true);
 					frame.dispose();

@@ -2,7 +2,7 @@ package game_tact;
 
 import java.awt.EventQueue;
 import java.awt.Image;
-import java.awt.image.BufferedImage;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -11,9 +11,9 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import java.awt.BorderLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class stratFrame {
 
@@ -53,7 +53,7 @@ public class stratFrame {
 		Image image = null;
 		URL url = null;
 	    try {
-	        url = new URL("https://www.scan.co.uk/images/homepages/progaming/guide-CSGO-strategy-image2.jpg");
+	        url = new URL(dbFunctions.gURL);
 	        image = ImageIO.read(url);
 	    } catch (MalformedURLException ex) {
 	        System.out.println("Malformed URL");
@@ -61,6 +61,12 @@ public class stratFrame {
 	        System.out.println("Can not load file");
 	    }
 		JLabel lblNewLabel = new JLabel(new ImageIcon(image));
+		lblNewLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.dispose();
+			}
+		});
 		frame.getContentPane().add(lblNewLabel, BorderLayout.CENTER);
 
             

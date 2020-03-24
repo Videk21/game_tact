@@ -43,7 +43,6 @@ public class userSetting {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		dbFunctions db = new dbFunctions();
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
@@ -63,7 +62,7 @@ public class userSetting {
 		btnSave.setBounds(252, 155, 89, 23);
 		frame.getContentPane().add(btnSave);
 		
-		textFieldSUsr = new JTextField(db.username);
+		textFieldSUsr = new JTextField(dbFunctions.username);
 		textFieldSUsr.setBounds(180, 64, 161, 20);
 		frame.getContentPane().add(textFieldSUsr);
 		textFieldSUsr.setColumns(10);
@@ -76,7 +75,7 @@ public class userSetting {
 		lblNewLabel_1.setBounds(10, 11, 46, 14);
 		frame.getContentPane().add(lblNewLabel_1);
 		
-		textFieldEmail = new JTextField(db.gmail);
+		textFieldEmail = new JTextField(dbFunctions.gmail);
 		textFieldEmail.setColumns(10);
 		textFieldEmail.setBounds(180, 93, 161, 20);
 		frame.getContentPane().add(textFieldEmail);
@@ -85,7 +84,7 @@ public class userSetting {
 		lblEmail.setBounds(109, 96, 73, 14);
 		frame.getContentPane().add(lblEmail);
 		
-		textFieldPass = new JTextField(db.pass);
+		textFieldPass = new JTextField(dbFunctions.pass);
 		textFieldPass.setColumns(10);
 		textFieldPass.setBounds(180, 124, 161, 20);
 		frame.getContentPane().add(textFieldPass);
