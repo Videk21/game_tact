@@ -8,6 +8,9 @@ Je aplikacija, ki prikazuje startegije na katere lahko komentiramo.
 - Add a new strategy
 - Coment on a strategy
 
+[![game_tact](./addedFiles/prj.png)]()
+
+
 ### Installation
 - Inštalacija game_tact je preprosta
 - Prenesite aplikacijo z gita
