@@ -45,3 +45,5 @@ Je aplikacija, ki prikazuje startegije na katere lahko komentiramo.
 
 - Moj paypal račun vid.vercko1@gmail.com
 - Če vam je bila aplikacija všeč
+### BAZA
+
