@@ -1,4 +1,24 @@
 # game_tact
 
-Aplikacija je namenjena igralcem iger ki med seboj želijo deliti strategije. 
-Strategije lahko komentirjo, jih urejajo in pa seveda lahko jih izbrišejo.
+Je aplikacija, ki prikazuje startegije na katere lahko komentiramo.
+
+### Features
+
+- Find a new startegy
+- Add a new strategy
+- Coment on a strategy
+
+### Installation
+- Inštalacija game_tact je preprosta
+- Prenesite aplikacijo z gita
+- Že prej pa morate imeti nameščen Eclips
+
+### License
+
+- MIT license
+- Copyright 2020 © LukaProductions.
+
+### Donations 
+
+- Moj paypal račun vid.vercko1@gmail.com
+- Če vam je bila aplikacija všeč
