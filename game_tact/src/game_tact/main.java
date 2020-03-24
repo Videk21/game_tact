@@ -136,9 +136,11 @@ public class main {
 		btnNext.setBounds(404, 351, 89, 23);
 		frame.getContentPane().add(btnNext);
 		
-		JList list = new JList();
-		list.setBounds(199, 174, 282, 139);
-		frame.getContentPane().add(list);
+		JList listComent = new JList();
+		listComent.setBounds(199, 174, 282, 139);
+		frame.getContentPane().add(listComent);
+		//JList<String> list = JList<String>();
+		
 		
 		JButton btnEdit = new JButton("Edit strategy");
 		btnEdit.addActionListener(new ActionListener() {

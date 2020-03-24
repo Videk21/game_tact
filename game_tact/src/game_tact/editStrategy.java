@@ -105,7 +105,8 @@ public class editStrategy {
 		JButton btnDelet = new JButton("Delete");
 		btnDelet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				dbFunctions.izbrisiStrategijo();
+				frame.dispose();
 			}
 		});
 		btnDelet.setBounds(200, 191, 89, 23);

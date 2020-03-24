@@ -22,6 +22,7 @@ public class dbFunctions {
 	public static String gmail;
 	public static String pass;
     static ArrayList<Integer> stStat = new ArrayList<Integer>();
+    static ArrayList<String> komentarji = new ArrayList<String>();
     public static int count=0;
 	
     
@@ -228,7 +229,7 @@ public class dbFunctions {
 	      getInfo();
 
 	}
-	public static void izbrisiStrategijo(String opis, String naslov, String url) {
+	public static void izbrisiStrategijo() {
 		Connection c = null;
 	      Statement stmt = null;
 	      try {
@@ -341,6 +342,34 @@ public static void backStrat() {
 	         System.exit(0);
 	      }
 	      System.out.println(gURL+","+Nsv+","+Ops+","+id_);
+		
+		
+	}
+	public static void getKomentarji() {
+		Connection c = null;
+	      Statement stmt = null;
+	      
+	      try {
+	    	  
+	         Class.forName("org.postgresql.Driver");
+	         c = DriverManager
+	            .getConnection("jdbc:postgresql://kandula.db.elephantsql.com:5432/pjthwgkl",
+	            "pjthwgkl", "sK9ZBSjmWuziwv4QEqlwYTrHnrh_XD-4");
+
+	         System.out.println("Opened database successfully");
+	         
+	         stmt = c.createStatement();
+	         ResultSet rs = stmt.executeQuery( "SELECT * FROM \"public\".\"komentarji\" where strategija_id="+sId+"");
+	         while ( rs.next() ) {
+	        	 komentarji.add(rs.getString(4)+": "+rs.getString(2));
+		         }
+	         rs.close();
+	         stmt.close();
+	         c.close();
+	      } catch ( Exception e ) {
+	         System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+	         System.exit(0);
+	      }
 		
 		
 	}
