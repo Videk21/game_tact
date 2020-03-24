@@ -10,6 +10,13 @@ Je aplikacija, ki prikazuje startegije na katere lahko komentiramo.
 
 [![game_tact](./addedFiles/prj.png)]()
 
+1. Uporabnik se v aplikacijo lahko prijavi oz. si naredi nov račun.
+[![game_tact](./addedFiles/login.png)]()
+[![game_tact](./addedFiles/register.png)]()
+
+2. Uporabnik lahko komentira objavo.
+
+[![game_tact](./addedFiles/komentira.png)]()
 
 ### Installation
 - Inštalacija game_tact je preprosta
